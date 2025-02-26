@@ -5,6 +5,7 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import CandidateDashboard from './components/Candidate/CandidateDashboard';
 import RecruiterDashboard from './components/Recruiter/RecruiterDashboard';
+import CandidateRanking from './components/Recruiter/CandidateRanking'; // New Candidate Ranking Page
 import Profile from './components/Common/Profile';
 import PrivateRoute from './routes/PrivateRoute';
 
@@ -31,7 +32,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/register" element={<Register />} />
-        
+
         {/* Candidate Dashboard Route */}
         <Route 
           path="/candidate/dashboard" 
@@ -41,7 +42,7 @@ function App() {
             </PrivateRoute>
           } 
         />
-        
+
         {/* Recruiter Dashboard Route */}
         <Route 
           path="/recruiter/dashboard" 
@@ -51,8 +52,18 @@ function App() {
             </PrivateRoute>
           } 
         />
-        
-        {/* Profile Route */}
+
+        {/* Candidate Ranking Route for Recruiters */}
+        <Route 
+          path="/recruiter/rankings" 
+          element={
+            <PrivateRoute isAuthenticated={isAuthenticated} userRole={userRole} allowedRole="recruiter">
+              <CandidateRanking />
+            </PrivateRoute>
+          } 
+        />
+
+        {/* Profile Route (for both candidates and recruiters) */}
         <Route 
           path="/profile" 
           element={
@@ -61,7 +72,7 @@ function App() {
             </PrivateRoute>
           } 
         />
-        
+
         {/* Catch-All Redirect */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>

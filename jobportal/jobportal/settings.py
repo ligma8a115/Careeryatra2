@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jobportal',  # Replace with your MySQL database name
         'USER': 'root',  # Replace with your MySQL username
-        'PASSWORD': 'aarya007',  # Replace with your MySQL password
+        'PASSWORD': 'Ch3-cooh',  # Replace with your MySQL password
         'HOST': '127.0.0.1',  # Change if your database is hosted remotely
         'PORT': '3306',  # Default MySQL port
     }
